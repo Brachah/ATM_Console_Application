@@ -1,1 +1,384 @@
-https://github.com/Brachah/ATM_Implementation_Console.git
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Atm_assignmentday4
+{
+    class Atm_implementation
+    {
+        public const int money = 250000;
+        static void Main(string[] args)
+        {
+                const int passw = ****;
+                Console.Write("Your password: ");
+                int pass = int.Parse(Console.ReadLine());
+
+                if (pass == passw)
+                {
+                    char d = 'Y';
+                    while ((d == 'Y')||(d=='y'))            
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("WELCOME **** **** ");
+                        Console.WriteLine("");
+                        Console.WriteLine("ATM OPERATIONS");
+                        Console.WriteLine("W: WITHDRAW                     R: RECHARGE");
+                        Console.WriteLine("T: TRANSFER                     P: CHANGE PASSWORD");
+                        Console.WriteLine("              Q: QUICK TELLER                 ");
+                        Console.WriteLine("");
+                        Console.Write("Operation: ");
+                        char choice = char.Parse(Console.ReadLine());
+                        switch (choice)
+                        {
+                            case 'w':
+                            case 'W':
+                                {
+                                    withdraw();
+                                    break;
+                                }
+                            case 'R':
+                            case 'r':
+                                {
+                                    recharge();
+                                    break;
+                                }
+                            case 't':
+                            case 'T':
+                                {
+                                    transfer();
+                                    break;
+                                }
+                            case 'p':
+                            case 'P':
+                                {
+                                    password();
+                                    break;
+                                }
+                            case 'q':
+                            case 'Q':
+                                {
+                                    Quick_teller();
+                                    break;
+                                }
+                            default:
+                                {
+                                    Console.WriteLine("Invalid");
+                                    break;
+                                }
+                        }
+                        Console.WriteLine("....___________________....");
+                        Console.WriteLine("Do you want to do another transaction? Y/any value");
+                        d = char.Parse(Console.ReadLine());
+                    }  
+                    Console.WriteLine("....___________________....");
+                    Console.WriteLine("Thank You for banking with us.");
+                }
+                else{Console.WriteLine("Beware of fraud!!!");}
+                Console.ReadLine();
+        }
+        public static void withdraw()
+        {
+            Console.WriteLine("....____________________....");
+            Console.WriteLine("WITHDRAW");
+            Console.WriteLine("");
+            Console.WriteLine("Amount to withdraw");
+            Console.WriteLine("1: 20,000                   2: 10,000");
+            Console.WriteLine("3: 5,000                    4:  4,000");
+            Console.WriteLine("5: 1,000                    6: others");
+            Console.Write("Atm operation: ");
+            char mny = char.Parse(Console.ReadLine());
+            Console.WriteLine("");
+            switch (mny)
+            {
+                case '1':
+                    {
+                        if (money > 20000)
+                        {
+                            int nbal;
+                            nbal = money - 20000;
+                            Console.WriteLine("Transaction successful");
+                            Console.WriteLine("Account balance: {0}", nbal);
+                        }
+                        else {
+                            Console.Beep();
+                            Console.WriteLine("....Balance insuficient....");
+                        }
+                      break;
+                    }
+                case '2':
+                    {
+                        if (money > 10000)
+                        {
+                            int nbal;
+                            nbal = money - 10000;
+                            Console.WriteLine("Transaction successful");
+                            Console.WriteLine("Account balance: {0}", nbal);
+                        }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Balance insuficient....");
+                        }
+                        break;
+                    }
+                case '3':
+                    {
+                        if (money > 5000)
+                        {
+                            int nbal;
+                            nbal = money - 5000;
+                            Console.WriteLine("Transaction successful");
+                            Console.WriteLine("Account balance: {0}", nbal);
+                        }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Balance insuficient....");
+                        }
+                        break;
+                    }
+                case '4':
+                    {
+                        if (money > 4000)
+                        {
+                            int nbal;
+                            nbal = money - 4000;
+                            Console.WriteLine("Transaction successful");
+                            Console.WriteLine("Account balance: {0}", nbal);
+                        }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Balance insuficient....");
+                        }     
+                        break;
+                    }
+                case '5':
+                    {
+                        if (money > 1000)
+                        {
+                            int nbal;
+                            nbal = money - 1000;
+                            Console.WriteLine("Transaction successful");
+                            Console.WriteLine("Account balance: {0}", nbal);
+                        }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Balance insuficient....");
+                        }
+                        break;
+                    }
+                case '6':
+                    {
+                        Console.WriteLine("Enter amount");
+                        int amount = int.Parse(Console.ReadLine());
+                        if (money > amount)
+                        {
+                            int nbal;
+                            nbal = money - amount;
+                            Console.WriteLine("Transaction successful");
+                            Console.WriteLine("Account balance: {0}", nbal);
+                        }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Balance insuficient....");
+                        }     
+                      break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("INVALID");
+                        break;
+                    }
+                    Console.ReadLine();
+           }           
+        }
+        public static void recharge()
+        {
+            Console.WriteLine("___________________");
+            Console.WriteLine("RECHARGE");
+            Console.WriteLine("");
+            Console.Write("Amount: ");
+            int amount = int.Parse(Console.ReadLine());
+            if (money > amount)
+            {
+                Console.Write("Phone number: ");
+                int pnum = int.Parse(Console.ReadLine());
+                Console.WriteLine("Transaction successful");
+                int nbal = money - amount;
+                Console.WriteLine("Account balance: {0}", nbal);
+            }
+            else
+            {
+                Console.Beep();
+                Console.WriteLine("....Insufficient amount....");
+            }
+            Console.ReadLine();
+        }
+        public static void transfer()
+        {
+            Console.WriteLine("...._________________....");
+            Console.WriteLine("TRANSFER");
+            Console.WriteLine("");
+            Console.Write("Amount transferring: ");
+            int amount = int.Parse(Console.ReadLine());
+            if (money > amount)
+            {
+                Console.Write("Account num: ");
+                int acctno = int.Parse(Console.ReadLine());
+                Console.WriteLine("Transaction successful ");
+                int bal = money - amount;
+                Console.WriteLine("Account balance: {0}",bal);
+            }
+            else 
+            {
+                Console.Beep();
+                Console.WriteLine("....Insufficient account balance...."); 
+            }
+            Console.ReadLine();
+        }
+        public static void password()
+        {
+            int passwd;
+            Console.WriteLine("....____________________....");
+            Console.WriteLine("Change password");
+            Console.WriteLine("");
+            Console.Write("Enter old password: ");
+            passwd = int.Parse(Console.ReadLine());
+             while (passwd != 1234){
+            do
+            {
+                Console.Beep();
+                Console.WriteLine("");
+                Console.WriteLine("....Wrong password....");
+                Console.Write("Enter old password: ");
+                passwd = int.Parse(Console.ReadLine());
+            }
+            while (passwd != 1234); 
+            }
+            
+            if (passwd == 1234)
+            {
+                Console.Write("Enter new password: ");
+                int newpasswd = int.Parse(Console.ReadLine());
+                Console.Write("Re-enter new password: ");
+                int rpass = int.Parse(Console.ReadLine());
+                while(newpasswd!= rpass)
+                {
+                do
+                {
+                    Console.Beep();
+                    Console.WriteLine("");
+                    Console.WriteLine("....The value is different from the first....");
+                    Console.Write("Re-enter new password: ");
+                    rpass = int.Parse(Console.ReadLine());
+                }
+                while(newpasswd!= rpass);
+                }
+                if (newpasswd == rpass)
+                {
+                    Console.WriteLine("____________________");
+                    Console.WriteLine("Operation successful.");
+                }
+            }
+
+            
+            
+        }
+        public static void Quick_teller()
+        {
+            Console.WriteLine("....____________________....");
+            Console.WriteLine("QUICK TELLER");
+            Console.WriteLine("");
+            Console.WriteLine("a: NEPA BILL                         b: DSTV BILL");
+            Console.WriteLine("c: HOSPITAL BILL                     d: INSURANCE BILL");
+            Console.Write("You choose: ");
+            char option = char.Parse(Console.ReadLine());
+            switch(option)
+            {
+                case 'a':
+                case 'A':
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("NEPA BILL");
+                        Console.Write("Account number: ");
+                        int acct = int.Parse(Console.ReadLine());
+                        Console.Write("Amount: ");
+                        int amt = int.Parse(Console.ReadLine());
+                        if (money > amt)
+                        { Console.WriteLine("Transaction successful"); }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Fund insufficient....");
+                        }
+                        break;
+                    }
+                case 'b':
+                case 'B':
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("DSTV BILL");
+                        Console.Write("Account number: ");
+                        int acct = int.Parse(Console.ReadLine());
+                        Console.Write("Amount: ");
+                        int amt = int.Parse(Console.ReadLine());
+                        if (money > amt)
+                        { Console.WriteLine("Transaction successful"); }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Fund insufficient....");
+                        }
+                        break;
+                    }
+                case 'c':
+                case 'C':
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("HOSPITAL BILL");
+                        Console.Write("Account number: ");
+                        int acct = int.Parse(Console.ReadLine());
+                        Console.Write("Amount: ");
+                        int amt = int.Parse(Console.ReadLine());
+                        if (money > amt)
+                        { Console.WriteLine("Transaction successful"); }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Fund insufficient....");
+                        }
+                        break;
+                    }
+                case 'd':
+                case 'D':
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("INSURANCE BILL");
+                        Console.Write("Account number: ");
+                        int acct = int.Parse(Console.ReadLine());
+                        Console.Write("Amount: ");
+                        int amt = int.Parse(Console.ReadLine());
+                        if (money > amt)
+                        { Console.WriteLine("Transaction successful"); }
+                        else
+                        {
+                            Console.Beep();
+                            Console.WriteLine("....Fund insufficient....");
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("INVALID");
+                        break;
+                    }
+            }
+            Console.ReadLine();
+        }
+    }
+}
